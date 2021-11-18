@@ -27,7 +27,6 @@ SECRET_KEY = 'django-insecure-ar64g0+exo5fai7f@961uj^mk!5_8at%jyeho#%#62-5xppb93
 DEBUG = True
 
 ALLOWED_HOSTS = []
-CROS_ALLOW_ALL_ORIGINS = True
 
 
 # Application definition
@@ -41,14 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'boletbendapp',
     'rest_framework',
-    'corsheaders',
 ]
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME'     : timedelta(minutes=15),
     'REFRESH_TOKEN_LIFETIME'    : timedelta(days=1),
     'ROTATE_REFRESH_TOKENS'     : False,
-    'BLACKLIST_AFTER_ROTATION'  : True,
+    'BLACKLIST_AFTER_ROTATION'  : False,
     'UPDATE_LAST_LOGIN'         : False,
     'ALGORITHM'                 : 'HS256',
     'USER_ID_FIELD'             : 'id',
@@ -63,7 +61,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 REST_FRAMEWORK = {
@@ -71,10 +68,11 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES' : (
-        'rest_framwork_simplejwt.authentication.JWTAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
 
+AUTH_USER_MODEL = 'boletbendapp.User'
 ROOT_URLCONF = 'boletbend.urls'
 
 TEMPLATES = [
@@ -101,8 +99,12 @@ WSGI_APPLICATION = 'boletbend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE'    : 'django.db.backends.postgresql_psycopg2',
+        'NAME'      : 'boletproject',
+        'USER'      : 'postgres',
+        'PASSWORD'  : '0921', 
+        'HOST'      : 'localhost',
+        'PORT'      : '5432'
     }
 }
 

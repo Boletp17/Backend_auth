@@ -9,11 +9,11 @@ class UserManager(BaseUserManager):
         """
         if not username:
             raise ValueError('Users must have an username')
-        if password == repassword:    
-            user = self.model(username=username)#el model viene de BaseUserManager y la variable username pertenese a ese model(constructor)
-            user.set_password(password)
-            user.save(usign=self._db)#guarda en las bases de datos configuradas en el proyecto
-            return user
+            
+        user = self.model(username=username)#el model viene de BaseUserManager y la variable username pertenese a ese model(constructor)
+        user.set_password(password)
+        user.save(usign=self._db)#guarda en las bases de datos configuradas en el proyecto
+        return user
 
 class User(AbstractBaseUser, PermissionsMixin):#Se hace herencia de los models seleccionados
     id = models.BigAutoField(primary_key=True)

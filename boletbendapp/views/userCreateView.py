@@ -1,9 +1,14 @@
-from rest_framework             import status, views
-from rest_framework.response    import Response
+from rest_framework                         import status, views
+from rest_framework.response                import Response
 from rest_framework_simplejwt.serializers   import TokenObtainPairSerializer
-from boletbendapp import serializers
 
-from boletbendapp.serializers   import UserSerializer
+from boletbendapp.serializers               import UserSerializer
+
+
+class UserWelcomeView(views.APIView):
+    def get(self, request, *args, **kwargs):
+        message = {"Detail" : "Bienvenidos a Bolet."}
+        return Response(message, status=status.HTTP_200_OK)
 
 class UserCreateView(views.APIView):
     def post(self, request, *args, **kwargs):

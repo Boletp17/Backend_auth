@@ -98,13 +98,14 @@ WSGI_APPLICATION = 'boletbend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE'    : 'django.db.backends.postgresql_psycopg2',
-        'NAME'      : 'd7bhqi1vn59429',
-        'USER'      : 'diwvwoubtiugzo',
-        'PASSWORD'  : '9e48e3162f59a7681073d6c22544a7833803e740eda503d03c8543eb569a1194', 
-        'HOST'      : 'ec2-18-214-238-28.compute-1.amazonaws.com',
+        'NAME'      : 'd58qqkblojcmvn',
+        'USER'      : 'hryjdrjuocsafk',
+        'PASSWORD'  : '30a16fe11aceae9a0406f7bc47e62cfc350d65724036faadc9f3bfb0e597f61c', 
+        'HOST'      : 'ec2-18-210-159-154.compute-1.amazonaws.com',
         'PORT'      : '5432'
     }
 }
